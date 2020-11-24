@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router();
 const Signin = require("../models/signin");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const express = require("express");
+const bcrypt = require("bcrypt");
+const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     message: "handling GET requaests to /signins",
   });
 });
-//signin medeelel burtgeh--------------------------->
+//signin medeelel burtgeh---------------------------=>
 router.post("/", (req, res, next) => {
   Signin.find({ email: req.body.email })
     .exec()
@@ -59,6 +59,14 @@ router.post("/", (req, res, next) => {
     });
 });
 //login pass shalgah token ugun ----------------------------->
+router.get("/login", async (req, res) => {
+  try {
+    const getlogin = await Signin.find();
+    res.json(getlogin);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 router.post("/login", (req, res, next) => {
   Signin.find({ email: req.body.email })
     .exec()
@@ -78,7 +86,7 @@ router.post("/login", (req, res, next) => {
           const token = jwt.sign(
             {
               name: signin[0].name,
-              signinId: signin[0]._id,
+              singinId: signin[0]._id,
             },
             process.env.JWT_KEY,
             {
@@ -97,7 +105,6 @@ router.post("/login", (req, res, next) => {
         });
       });
     })
-
     .catch((err) => {
       console.log(err);
       res.status(500).json({ error: err });
