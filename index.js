@@ -10,7 +10,6 @@ const app = express();
 let port = process.env.PORT || 9000;
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
-console.log("hello 2");
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

@@ -59,14 +59,14 @@ router.post("/", (req, res, next) => {
     });
 });
 //login pass shalgah token ugun ----------------------------->
-router.get("/login", async (req, res) => {
-  try {
-    const getlogin = await Signin.find();
-    res.json(getlogin);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
+// router.get("/login", async (req, res) => {
+//   try {
+//     const getlogin = await Signin.find();
+//     res.json(getlogin);
+//   } catch (err) {
+//     res.json({ message: err });
+//   }
+// });
 router.post("/login", (req, res, next) => {
   Signin.find({ email: req.body.email })
     .exec()
