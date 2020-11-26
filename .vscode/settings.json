@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/db1ec778-2a2a-4b8e-a91d-b97155809bd9/resourceGroups/blog/providers/Microsoft.Web/sites/ciscoblogapi"
+}
