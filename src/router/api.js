@@ -9,7 +9,7 @@ const checkAuth = require("../middleware/checkAuth");
 
 // Handle incoming GET requests to
 router.get("/", (req, res) => {
-  res.send("hello cisoc api");
+  res.send("hello cisoc api code");
 });
 //pull post get post list========================>
 router.get("/post", async (req, res) => {
