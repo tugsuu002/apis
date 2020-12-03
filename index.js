@@ -1,6 +1,7 @@
 const connectDB = require("./src/config/connection");
 const signinRoutes = require("./src/router/signin");
 const postRoutes = require("./src/router/post");
+const apiRoutes = require("./src/router/api");
 const mongoose = require("mongoose");
 const express = require("express");
 const morgan = require("morgan");
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/", (req, res) => {
-  res.send("hello cisoc api");
+  res.send("hello wellcom");
 });
 //localhost 9000 port deer =================================>
 app.listen(port, () => {
@@ -36,6 +37,7 @@ connectDB();
 //========Routes=====================>
 app.use("/signin", signinRoutes);
 app.use("/post", postRoutes);
+app.use("/api", apiRoutes);
 app.use((req, res, next) => {
   const error = new Error("Note found");
   error.status = 404;
