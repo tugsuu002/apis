@@ -155,7 +155,14 @@ router.get("/signin/:signinId", (req, res, next) => {
     });
 });
 //end signin api code================================<
-
+router.get("/login", async (req, res) => {
+  try {
+    const getlogin = await Signin.find();
+    res.json(getlogin);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 //Login code ======================>
 router.post("/login", (req, res, next) => {
   Signin.find({ email: req.body.email })
