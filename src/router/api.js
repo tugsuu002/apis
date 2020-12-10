@@ -88,17 +88,17 @@ router.delete("/post/:postId", (req, res, next) => {
 
 //signin api code ================================================>
 //-----------signin get--------------------------->
-router.get("/signin", async (req, res) => {
-  try {
-    const posts = await Signin.find();
-    res.json(posts.filter((post) => post.email === req.user.email));
-  } catch (err) {
-    res.json({ message: err });
-  }
-  res.status(200).json({
-    message: "handling GET requaests to /signins",
-  });
-});
+// router.get("/signin", async (req, res) => {
+//   try {
+//     const posts = await Signin.find();
+//     res.json(posts.filter((post) => post.email === req.user.email));
+//   } catch (err) {
+//     res.json({ message: err });
+//   }
+//   res.status(200).json({
+//     message: "handling GET requaests to /signins",
+//   });
+// });
 //signin medeelel burtgeh---------------------------=>
 router.post("/signin", (req, res, next) => {
   Signin.find({ email: req.body.email })
